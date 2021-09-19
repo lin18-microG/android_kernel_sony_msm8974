@@ -177,7 +177,6 @@ struct radio_hci_dev {
 	int (*send)(struct sk_buff *skb);
 	void (*destruct)(struct radio_hci_dev *hdev);
 	void (*notify)(struct radio_hci_dev *hdev, unsigned int evt);
-	void (*close_smd)(void);
 };
 
 int radio_hci_register_dev(struct radio_hci_dev *hdev);
@@ -878,6 +877,8 @@ int hci_def_data_write(struct hci_fm_def_data_wr_req *arg,
 	struct radio_hci_dev *hdev);
 int hci_fm_do_calibration(__u8 *arg, struct radio_hci_dev *hdev);
 int hci_fm_do_calibration(__u8 *arg, struct radio_hci_dev *hdev);
+int hci_fm_smd_register(void);
+void hci_fm_smd_deregister(void);
 #endif /* __KERNEL__ */
 
 static inline int is_valid_tone(int tone)
